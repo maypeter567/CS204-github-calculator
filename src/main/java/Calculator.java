@@ -38,7 +38,19 @@ class Calculator {
     etc
      */
     int fibonacciNumberFinder(int n){
-        return 0;
+        if (n <= 1)
+            return n;
+        
+        int fib = 1;
+        int prevFib = 1;
+        
+        for (int i = 2; i < n; i++) {
+            int temp = fib;
+            fib += prevFib;
+            prevFib = temp;
+        }
+        
+        return fib;
     }
 
 
@@ -50,7 +62,18 @@ class Calculator {
     if int a = 16 then this method returns: 10000
      */
     String intToBinaryNumber(int number){
-        return null;
+        if (number == 0)
+            return "0";
+        
+        StringBuilder binary = new StringBuilder();
+        
+        while (number > 0) {
+            int remainder = number % 2;
+            binary.insert(0, remainder); // Insert remainder at the beginning of the string
+            number = number / 2;
+        }
+        
+        return binary.toString();
     }
 
     /*
@@ -62,8 +85,10 @@ class Calculator {
     if you run this function twice with the same String input, it must return 2 unique String IDs
      */
     String createUniqueID(String n){
-        return null;
+        IDCounter++;
+        return n + IDCounter;
     }
 
+    int IDCounter = 0;
 
 }
